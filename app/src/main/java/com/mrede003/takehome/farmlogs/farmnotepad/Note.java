@@ -6,6 +6,8 @@ package com.mrede003.takehome.farmlogs.farmnotepad;
  */
 
 public class Note {
+
+    private int id;
     private String title;
     private String content;
     private String date;
@@ -18,6 +20,19 @@ public class Note {
 
     public Note(String title, String content, String date, String time, String pic1, String pic2, String pic3, double latitude, double longitude)
     {
+        this.title=title;
+        this.content=content;
+        this.date=date;
+        this.time=time;
+        this.pic1=pic1;
+        this.pic2=pic2;
+        this.pic3=pic3;
+        this.latitude=latitude;
+        this.longitude=longitude;
+    }
+    public Note(String title, String content, String date, String time, String pic1, String pic2, String pic3, double latitude, double longitude, int id)
+    {
+        this.id=id;
         this.title=title;
         this.content=content;
         this.date=date;
@@ -51,6 +66,14 @@ public class Note {
         this.pic3="";
         this.latitude=0.0;
         this.longitude=0.0;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

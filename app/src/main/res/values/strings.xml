@@ -4,4 +4,5 @@
     <string name="title_activity_note_display">NoteDisplay</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_notes_display">NotesDisplay</string>
+    <string name="title_activity_test">TestActivity</string>
 </resources>
