@@ -3,14 +3,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mrede003.takehome.farmlogs.farmnotepad.NoteDisplay">
+    tools:context="com.mrede003.takehome.farmlogs.farmnotepad.NoteDisplay"
+    android:background="@color/notePadBlue">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <RelativeLayout
+        android:id="@+id/TextFABLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/GPSDateImageLayout"
+        >
+        <EditText
+            android:id="@+id/textArea"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:inputType="textMultiLine|textCapSentences"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:background="@color/notepadYellow"
+            />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/fab_margin"
+            android:onClick="launchMaps"
+            android:src="@drawable/gps"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/GPSDateImageLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/gps"/>
+        android:orientation="vertical"
+        android:paddingTop="3dp"
+        android:background="@color/black">
+
+        <TextView
+            android:id="@+id/date_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/notepadYellow"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+        <TextView
+            android:id="@+id/gps_coord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/notepadYellow"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+    </LinearLayout>
 </RelativeLayout>

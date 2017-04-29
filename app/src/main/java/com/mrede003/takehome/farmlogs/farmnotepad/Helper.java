@@ -20,12 +20,19 @@ public class Helper {
          return PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(activity,
                 Manifest.permission.ACCESS_FINE_LOCATION);
     }
+    public static boolean hasWritePermission(Activity activity)
+    {
+        return PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(activity,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    }
     public static boolean requestLocationPermission(Activity activity)
     {
         int result=0;
         ActivityCompat.requestPermissions(activity,
-                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE},
                 result);
+
         return hasLocationPermission(activity);
     }
 

@@ -26,7 +26,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String NOTE_ID = "id";
     private static final String TITLE = "title";
     private static final String DATE= "date";
-    private static final String TIME = "time";
     private static final String CONTENTS = "contents";
     private static final String LATITUDE = "latitude";
     private static final String LONGITUDE = "longitude";
@@ -59,7 +58,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 NOTE_ID + " INTEGER PRIMARY KEY," + // Define a primary key
                 TITLE + " TEXT," +
                 DATE + " TEXT," +
-                TIME + " TEXT," +
                 LATITUDE +" DOUBLE,"+
                 LONGITUDE +" DOUBLE,"+
                 CONTENTS + " TEXT," +
@@ -88,7 +86,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values= new ContentValues();
         values.put(TITLE, note.getTitle());
         values.put(DATE, note.getDate());
-        values.put(TIME, note.getTime());
         values.put(LATITUDE, note.getLatitude());
         values.put(LONGITUDE, note.getLongitude());
         values.put(CONTENTS, note.getTitle());
@@ -100,12 +97,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     //Method to update the content of a note. Returns n>0 if a note was updated
     //Returns 0 if the note did not exist
-    public int updateNoteContent(Note note)
+    public int updateNote(Note note)
     {
         SQLiteDatabase database= this.getWritableDatabase();
         int output=0;
         ContentValues values= new ContentValues();
-        values.put(CONTENTS, note.getTitle());
+        values.put(CONTENTS, note.getContent());
+        values.put(PIC1_PATH, note.getPic1());
+        values.put(PIC2_PATH, note.getPic2());
+        values.put(PIC3_PATH, note.getPic3());
         output=database.update(TABLE_NAME, values, NOTE_ID + " = ?",
                 new String[] { String.valueOf(note.getId()) });
         database.close();
@@ -140,16 +140,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 note.setId(Integer.parseInt(cursor.getString(0)));
                 note.setTitle(cursor.getString(1));
                 note.setDate(cursor.getString(2));
-                note.setTime(cursor.getString(3));
-                note.setLatitude(Double.parseDouble(cursor.getString(4)));
-                note.setLongitude(Double.parseDouble(cursor.getString(5)));
-                note.setContent(cursor.getString(6));
-                note.setPic1(cursor.getString(7));
-                note.setPic2(cursor.getString(8));
-                note.setPic3(cursor.getString(9));
+                note.setLatitude(Double.parseDouble(cursor.getString(3)));
+                note.setLongitude(Double.parseDouble(cursor.getString(4)));
+                note.setContent(cursor.getString(5));
+                note.setPic1(cursor.getString(6));
+                note.setPic2(cursor.getString(7));
+                note.setPic3(cursor.getString(8));
                 notes.add(note);
             } while (cursor.moveToNext());
         }
+        cursor.close();
 
         // return contact list
         return notes;

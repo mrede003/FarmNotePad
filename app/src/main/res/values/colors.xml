@@ -2,7 +2,13 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="androidGreen">#a4c639</color>
+    <color name="colorAccent">#D9B32A</color>
+    <color name="mustardBrown">#D9B32A</color>
     <color name="white">#FFFFFF</color>
+    <color name="notepadYellow">#ECE63D</color>
+    <color name="farmBrown">#654321</color>
+    <color name="notePadBlue">#CCFFFF</color>
+    <color name="black">#000000</color>
+
+
 </resources>

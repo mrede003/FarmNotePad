@@ -11,32 +11,29 @@ public class Note {
     private String title;
     private String content;
     private String date;
-    private String time;
     private String pic1;
     private String pic2;
     private String pic3;
     private double latitude;
     private double longitude;
 
-    public Note(String title, String content, String date, String time, String pic1, String pic2, String pic3, double latitude, double longitude)
+    public Note(String title, String content, String date, String pic1, String pic2, String pic3, double latitude, double longitude)
     {
         this.title=title;
         this.content=content;
         this.date=date;
-        this.time=time;
         this.pic1=pic1;
         this.pic2=pic2;
         this.pic3=pic3;
         this.latitude=latitude;
         this.longitude=longitude;
     }
-    public Note(String title, String content, String date, String time, String pic1, String pic2, String pic3, double latitude, double longitude, int id)
+    public Note(String title, String content, String date, String pic1, String pic2, String pic3, double latitude, double longitude, int id)
     {
         this.id=id;
         this.title=title;
         this.content=content;
         this.date=date;
-        this.time=time;
         this.pic1=pic1;
         this.pic2=pic2;
         this.pic3=pic3;
@@ -48,19 +45,17 @@ public class Note {
         this.title="";
         this.content="";
         this.date="";
-        this.time="";
         this.pic1="";
         this.pic2="";
         this.pic3="";
         this.latitude=0.0;
         this.longitude=0.0;
     }
-    public Note(String title, String content, String date, String time)
+    public Note(String title, String content, String date)
     {
         this.title=title;
         this.content=content;
         this.date=date;
-        this.time=time;
         this.pic1="";
         this.pic2="";
         this.pic3="";
@@ -98,14 +93,6 @@ public class Note {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public String getPic1() {

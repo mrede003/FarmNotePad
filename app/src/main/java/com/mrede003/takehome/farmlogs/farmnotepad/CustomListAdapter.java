@@ -1,6 +1,7 @@
 package com.mrede003.takehome.farmlogs.farmnotepad;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ public class CustomListAdapter extends BaseAdapter {
     private Activity activity;
     private LayoutInflater inflater=null;
     private ArrayList<Note> noteList;
+    private final String create="Created on ";
 
     public CustomListAdapter(Activity a, ArrayList<Note> noteList) {
         this.noteList=noteList;
@@ -48,8 +50,9 @@ public class CustomListAdapter extends BaseAdapter {
         //ImageView thumbImage=(ImageView)vi.findViewById(R.id.note_image); // note image
 
         title.setText(noteList.get(position).getTitle());
-        dateTime.setText("Created on "+noteList.get(position).getDate()+
-                " at "+noteList.get(position).getTime());
+        dateTime.setText(create+noteList.get(position).getDate());        //Can't access R.string from a class without context without doing some weird hacky stuff
+                                                                          //IE: making singleton class in home that returns context or just passing a parameter
+                                                                          //Would love to hear a seniors devs opinion on how to solve accessing R.string from a pure java class.
         return vi;
     }
 }

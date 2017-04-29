@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/notepadYellow"
     tools:context="com.mrede003.takehome.farmlogs.farmnotepad.Home">
 
-
-
-
-    <include layout="@layout/content_home" />
+    <ListView
+        android:id="@+id/notesListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="#b5b5b5"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

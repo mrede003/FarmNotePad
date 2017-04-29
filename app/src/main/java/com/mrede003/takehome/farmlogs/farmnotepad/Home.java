@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.*;
 
+import java.util.ArrayList;
+
 public class Home extends AppCompatActivity {
 
-    private static final String TAG = "Home";
-    private ListView notesList;
+    private static ArrayList<Note> noteList;
+    private ListView notesListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,31 +21,34 @@ public class Home extends AppCompatActivity {
         {
             Helper.requestLocationPermission(this);
         }
-        DatabaseHelper.getInstance(this).deleteAll();
-        Note n=new Note("Corn and Maze", "the content", "04/29/2017", "12:15 PM");
-        Note y=new Note("Corn and Ham", "the content", "04/29/2017", "12:15 PM");
-        Note h=new Note("Corn and Chicken", "the content", "04/29/2017", "12:15 PM");
-        Note g=new Note("Corn and Beef", "the content", "04/29/2017", "12:15 PM");
-        Note d=new Note("Corn and Steak", "the content", "04/29/2017", "12:15 PM");
-
-        DatabaseHelper.getInstance(this).addNote(n);
-        DatabaseHelper.getInstance(this).addNote(y);
-        DatabaseHelper.getInstance(this).addNote(h);
-        DatabaseHelper.getInstance(this).addNote(g);
-        DatabaseHelper.getInstance(this).addNote(d);
-
-        notesList = (ListView) findViewById(R.id.notesListView);
-        CustomListAdapter listAdapter=new CustomListAdapter(this,DatabaseHelper.getInstance(this).getAllNotes());
-        notesList.setAdapter(listAdapter);
-        notesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        notesListView = (ListView) findViewById(R.id.notesListView);
+        notesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 Intent intent = new Intent(Home.this, NoteDisplay.class);
+                intent.putExtra(getString(R.string.note_id), noteList.get(position).getId());
+                intent.putExtra(getString(R.string.title), noteList.get(position).getTitle());
+                intent.putExtra(getString(R.string.date), noteList.get(position).getDate());
+                intent.putExtra(getString(R.string.latitude), noteList.get(position).getLatitude());
+                intent.putExtra(getString(R.string.longitude), noteList.get(position).getLongitude());
+                intent.putExtra(getString(R.string.content), noteList.get(position).getContent());
+                intent.putExtra(getString(R.string.pic1), noteList.get(position).getPic1());
+                intent.putExtra(getString(R.string.pic2), noteList.get(position).getPic2());
+                intent.putExtra(getString(R.string.pic3), noteList.get(position).getPic3());
                 startActivity(intent);
             }
         });
     }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        noteList=DatabaseHelper.getInstance(this).getAllNotes();
+        CustomListAdapter listAdapter=new CustomListAdapter(this,noteList);
+        notesListView.setAdapter(listAdapter);
+    }
+
     public void openNewNotes(View view)
     {
         Intent intent = new Intent(this, NoteDisplay.class);

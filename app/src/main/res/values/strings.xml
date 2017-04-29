@@ -5,4 +5,26 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_notes_display">NotesDisplay</string>
     <string name="title_activity_test">TestActivity</string>
+    <string name="noteDisplayTag">NOTE_DISPLAY</string>
+    <string name="homeTag">HOME</string>
+
+    <string name="note_id">NOTE_ID</string>
+    <string name="title">TITLE</string>
+    <string name="date">DATE</string>
+    <string name="time">TIME</string>
+    <string name="latitude">LATITUDE</string>
+    <string name="longitude">LONGITUDE</string>
+    <string name="content">CONTENT</string>
+    <string name="pic1">PIC1</string>
+    <string name="pic2">PIC2</string>
+    <string name="pic3">PIC3</string>
+
+    <string name="blank_title_error">Please enter a title and try again!</string>
+    <string name="pics_full_error">Currently FarmNotePad can only hold 3 pictures!</string>
+
+    <string name="create">Created on\u0020</string>
+    <string name="gps_colon">GPS Coordinates:\u0020</string>
+    <string name="enter_title">Please Enter a Title</string>
+    <string name="set_title">Set Title</string>
+    <string name="save">Save</string>
 </resources>
